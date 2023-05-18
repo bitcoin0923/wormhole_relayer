@@ -1,0 +1,47 @@
+{
+  "name": "@wormhole-foundation/relayer-engine",
+  "version": "0.1.0",
+  "description": "Relayer Engine",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "redis": "docker run --rm -p 6379:6379 --name redis-docker -d redis",
+    "test-redis": "docker run --rm -p 6301:6379 --name relayer-engine-test -d redis; npm run test; docker kill relayer-engine-test",
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "typecheck": "tsc --noEmit --skipLibCheck",
+    "prettier": "prettier --write .",
+    "mainnet-spy": "docker run --platform=linux/amd64 -p 7073:7073 --entrypoint /guardiand ghcr.io/wormhole-foundation/guardiand:latest spy --nodeKey /node.key --spyRPC \"[::]:7073\" --network /wormhole/mainnet/2 --bootstrap /dns4/wormhole-mainnet-v2-bootstrap.certus.one/udp/8999/quic/p2p/12D3KooWQp644DK27fd3d4Km3jr7gHiuJJ5ZGmy8hH4py7fP4FP7",
+    "testnet-spy": "docker run --platform=linux/amd64 -p 7073:7073 --entrypoint /guardiand ghcr.io/wormhole-foundation/guardiand:latest spy --nodeKey /node.key --spyRPC \"[::]:7073\" --network /wormhole/testnet/2/1 --bootstrap /dns4/wormhole-testnet-v2-bootstrap.certus.one/udp/8999/quic/p2p/12D3KooWAkB9ynDur1Jtoa97LBUp8RXdhzS5uHgAfdTquJbrbN7i",
+    "prepare": "npm run build"
+  },
+  "author": "Joe Howarth",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@bull-board/api": "^5.0.0",
+    "@bull-board/koa": "^5.0.0",
+    "@certusone/wormhole-sdk": "^0.9.16",
+    "@certusone/wormhole-spydk": "^0.0.1",
+    "@datastructures-js/queue": "^4.2.3",
+    "@improbable-eng/grpc-web-node-http-transport": "^0.15.0",
+    "@mysten/sui.js": "^0.32.2",
+    "@xlabs-xyz/wallet-monitor": "0.1.9",
+    "bech32": "^2.0.0",
+    "bullmq": "^3.10.1",
+    "ethers": "^5.7.2",
+    "generic-pool": "^3.9.0",
+    "ioredis": "^5.3.2",
+    "koa": "^2.14.1",
+    "lru-cache": "^9.1.1",
+    "prom-client": "^14.2.0",
+    "typescript": "^4.9.5",
+    "winston": "^3.8.2"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@types/bs58": "^4.0.1",
+    "@types/koa": "^2.13.5",
+    "@types/winston": "^2.4.4",
+    "prettier": "^2.8.4"
+  }
+}
