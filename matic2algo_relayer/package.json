@@ -12,6 +12,7 @@
     "@certusone/wormhole-sdk": "^0.9.11",
     "@mysten/sui.js": "^0.32.1",
     "@wormhole-foundation/relayer-engine": "github:wormhole-foundation/relayer-engine",
+    "bullmq": "^3.13.4",
     "koa": "^2.14.1",
     "koa-router": "^12.0.0",
     "node-redis": "^0.1.7",
